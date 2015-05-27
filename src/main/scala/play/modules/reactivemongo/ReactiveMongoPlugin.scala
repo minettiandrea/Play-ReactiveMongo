@@ -23,8 +23,9 @@ import reactivemongo.core.nodeset.Authenticate
 import scala.concurrent.{ Await, ExecutionContext }
 import scala.util.{ Failure, Success }
 import scala.util.control.NonFatal
+import javax.inject._
 
-class ReactiveMongoPlugin(app: Application) extends Plugin {
+class ReactiveMongoPlugin @Inject() (app: Application) extends Plugin {
   private var _helper: Option[ReactiveMongoHelper] = None
   def helper = _helper.getOrElse(throw new RuntimeException("ReactiveMongoPlugin error: no ReactiveMongoHelper available?"))
 
